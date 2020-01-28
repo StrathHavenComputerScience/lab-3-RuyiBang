@@ -16,10 +16,22 @@ public class Lab3
     
   public static void lightCandles()
   {
-    //insert instructions below
-  
-  
-  
+    for(int i = 0; i<10; i++){
+        while(Robot.frontIsClear() != true){
+            Robot.turnLeft();
+            Robot.move();
+            turnRight();
+        }
+        Robot.move();
+        Robot.makeDark();
+        Robot.move();
+        turnRight();
+        while(Robot.frontIsClear() != false)
+        {
+            Robot.move();
+        }
+        Robot.turnLeft();
+    }
   }
   
   //Run this method to test completeRoom on map room1.txt
@@ -71,6 +83,13 @@ public class Lab3
   
   
   }
+  
+  public static void turnRight()
+  {
+      Robot.turnLeft();
+      Robot.turnLeft();
+      Robot.turnLeft();
+  } 
   
   //Don't run these. I will!
   public static void testLightCandles3()
