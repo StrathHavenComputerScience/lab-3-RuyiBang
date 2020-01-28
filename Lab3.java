@@ -53,10 +53,31 @@ public class Lab3
   //Complete this method.  You will need to write additional helper methods.
   public static void completeRoom()
   {
-    //insert instructions below
-  
-  
-  
+    for(int i = 0; i<4; i++){
+        for(int o = 0; o<5;o++){
+            Robot.turnLeft();
+            if (Robot.frontIsClear() != false){
+                Robot.move();
+                if(Robot.onDark()){
+                    turnAround();
+                    Robot.move();
+                    Robot.turnLeft();
+                } else {
+                    Robot.makeDark();
+                    turnAround();
+                    Robot.move();
+                    Robot.turnLeft();
+                }
+            } else {
+                turnRight();
+            }
+            if(o == 4) {
+                turnRight();
+            } else {
+                Robot.move();
+            }
+        }
+    }
   }
   
   //Run this method to test swapAll on map swap1.txt
@@ -78,10 +99,53 @@ public class Lab3
   //Complete this method.  You will need to write additional helper methods.
   public static void swapAll()
   {
-    //insert instructions below
-  
-  
-  
+    for(int i = 0; i<10; i++){
+        boolean right = false;
+        boolean left = false;
+        Robot.turnLeft();
+        Robot.move();
+        if(Robot.onDark()){
+            left = true;
+        }
+        turnAround();
+        Robot.move();
+        Robot.move();
+        if(Robot.onDark()){
+            right = true;
+        }
+        turnAround();
+        Robot.move();
+        Robot.move();
+        if(right != true){
+            if(Robot.onDark()){
+            Robot.makeLight();
+        }
+        } else {
+            if (Robot.onDark()){
+            } else {
+            Robot.makeDark();
+        }
+        }
+        turnAround();
+        Robot.move();
+        Robot.move();
+        if(left != true){
+            if(Robot.onDark()){
+            Robot.makeLight();
+        }
+        } else {
+            if (Robot.onDark()){
+            } else {
+            Robot.makeDark();
+        }
+        }
+        turnAround();
+        Robot.move();
+        turnRight();
+        if (i<9){
+            Robot.move();
+        }
+    }
   }
   
   public static void turnRight()
